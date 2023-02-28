@@ -1,4 +1,3 @@
-import  Navigator  from "./components/Navigator";
 import  Home  from "./pages/Home";
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';

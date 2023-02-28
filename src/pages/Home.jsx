@@ -1,10 +1,10 @@
-import { MusicsIndex } from "../components/MusicsIndex";
+import Musics from "./Musics"
 
-export function Home() {
+export default function Home() {
   return (
     <div>
       <h1>Welcome to the Home Page!</h1>
-      <MusicsIndex />
+      <Musics />
     </div>
   )
 }

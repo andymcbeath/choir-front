@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { MusicsIndex } from "./MusicsIndex";
-import { MusicsNew } from "./MusicsNew";
+import { MusicsIndex } from "../components/MusicsIndex";
+import { MusicsNew } from "../components/MusicsNew";
 
-export function Home() {
+export default function Home() {
   const [musics, setMusics] = useState([]);
 
   const handleIndexMusics = () => {
@@ -19,7 +19,7 @@ export function Home() {
   return (
     <div>
       <MusicsNew />
-      <MusicsIndex musics={musics}} />
+      <MusicsIndex musics={musics} />
     </div>
   );
 }
