@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { MusicsIndex } from "../components/MusicsIndex";
 import { MusicsNew } from "../components/MusicsNew";
 
-export default function Home() {
+export function Musics() {
   const [musics, setMusics] = useState([]);
 
   const handleIndexMusics = () => {
