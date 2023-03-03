@@ -31,11 +31,28 @@ export default function Home() {
              setIsMusicsShowVisible(true);
              setCurrentMusic(music);
              };
+
+      const handleUpdateMusic = (id, params, successCallback) => {
+            console.log("handleUpdateMusic", params);
+            axios.patch(`http://localhost:3000/musics/${id}.json`, params).then((response) => {
+              setPhotos(
+                photos.map((music) => {
+                  if (music.id === response.data.id) {
+                    return response.data;
+                  } else {
+                    return music;
+                  }
+                })
+              );
+              successCallback();
+              handleClose();
+            });
+          };
             
-             const handleClose = () => {
-               console.log("handleClose");
-               setIsMusicsShowVisible(false);
-             };
+      const handleClose = () => {
+        console.log("handleClose");
+        setIsMusicsShowVisible(false);
+      };
 
       useEffect(handleIndexMusics, []);
   return (
@@ -45,7 +62,7 @@ export default function Home() {
       <MusicsIndex musics={musics} onShowMusic={handleShowMusic} />
       <MusicsIndex onCreateMusic={handleCreateMusic} />
       <Modal show={isMusicsShowVisible} onClose={handleClose}>
-      <MusicsShow music={currentMusic} />
+      <MusicsShow photo={currentMusic} onUpdateMusic={handleUpdateMusic} />
       </Modal>
     </div>
   )
