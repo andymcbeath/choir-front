@@ -7,6 +7,7 @@ export function MusicsIndex(props) {
           <h2>{music.title}</h2>
          <p>Title: {music.title}</p>
          <p>Composer: {music.composer}</p>
+         <button onClick={() => props.onShowMusic(music)}>More info</button>
         </div>
      ))}
     </div>
