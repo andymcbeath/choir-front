@@ -1,9 +1,15 @@
 export function MusicsShow(props) {
+
   const handleSubmit = (event) => {
         event.preventDefault();
         const params = new FormData(event.target);
         props.onUpdateMusic(props.music.id, params, () => event.target.reset());
       };
+  
+  const handleClick = () => {
+    props.onDestroyMusic(props.music);
+  };
+
   return (
     <div>
       <h1>Score information</h1>
@@ -22,6 +28,7 @@ export function MusicsShow(props) {
          </div>
          <button type="submit">Update Music</button>
        </form>
+       <button onClick={handleClick}>Destroy music</button>
     </div>
   );
 }
