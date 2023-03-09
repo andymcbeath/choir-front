@@ -3,27 +3,29 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Musics } from "./pages/Scores"
-import { FileForm } from "./components/FileForm"
-import { LatestImage } from "./components/LatestImage"
+import  FileForm  from "./components/FileForm"
+import LatestImage from "./components/LatestImage"
+import { createContext } from "react";
+import { useState } from "react";
 
-export const AppContext = createContext(nulls);
+export const AppContext = createContext(null);
 
 function App() {
   const [latestPost, setLatestPost] = useState(AppContext);
   return (
-    <AppContext.Provide value={{ latestPost, setLatestPost }}>
+    <AppContext.Provider value={{ latestPost, setLatestPost }}>
     <div className="App">
       <FileForm />
       <LatestImage />
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home /> } />
           <Route path="/Scores" element={<Musics /> } />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </div>
-    </AppContext.Provide>
+    </AppContext.Provider>
   )
 }
 
