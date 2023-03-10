@@ -1,4 +1,5 @@
 import "./Modal.css";
+import React from "react";
 
 export function Modal(props) {
   if (props.show) {
