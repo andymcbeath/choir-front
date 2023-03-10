@@ -1,21 +1,26 @@
-import React from 'react'
-import { useEffect } from 'react';
-import { useContext } from 'react';
-import { AppContext } from "../App"
+import React from "react";
 
-export default function LatestImage() {
-  const { latestPost, setLatestPost } = useContext(AppContext);
+function LatestImage(props) {
+  const latestPost = props.latestPost;
 
-  useEffect(() => {
-    fetch("http://localhost:3000/latest")
-      .then((response) => response.json())
-      .then((data) => {
-        setLatestPost(data.image_url)
-      })
-      .catch((error) => console.error(error));
-  }, [latestPost])
-  return (
-  <div>
-    <img src={latestPost} alt="latest post" className="latest-image" />LatestImage</div>
-  );
+  if (latestPost instanceof File && latestPost.type.startsWith("image/")) {
+    return (
+      <div>
+        <h2>Latest Image:</h2>
+        <img src={URL.createObjectURL(latestPost)} alt="Latest post" />
+      </div>
+    );
+  } else if (typeof latestPost === "string" && latestPost.endsWith(".pdf")) {
+    return (
+      <div>
+        <h2>Latest PDF:</h2>
+        <embed src={latestPost} width="500" height="500" />
+      </div>
+    );
+  } else {
+    return null; // If the latest post is not a string, image, or PDF, don't render anything
+  }
 }
+
+export default LatestImage;
+
